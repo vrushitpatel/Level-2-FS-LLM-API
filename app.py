@@ -6,6 +6,7 @@ import requests
 import json
 import os
 from enum import Enum
+import uvicorn
 
 app = FastAPI()
 
@@ -292,3 +293,7 @@ def qualify_customer(id: int):
             return customer
     
     raise HTTPException(status_code=404, detail="Customer not found")
+
+# Running on Public URL
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=7860)
